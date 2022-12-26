@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.yangdoll.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="kr.co.yangdoll.vo.BoardVO" alias="BoardVO"/>
+		<!-- 여기에 VO클래스에 대한 정보를 수록함... 이 파일은 오직 VO클래스와의 관계를 설정하는 것임..... -->
+	</typeAliases>
+</configuration>

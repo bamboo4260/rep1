@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.yangdoll.dto.MemberDAO"> 
+<!-- DAO객체에 대한 구분(nameSapece)를 지정함 온전한 이름으로 작성하는 것을 권장 본인의 구조에 맞게 작성-->
+
+
+  <select id="getMember"  parameterMap="string" resultType="MemberVO">
+    select * from members where memId = #{memId}
+  </select>
+  <!-- 쿼리 관련 태그는 id가 쿼리 관련 태그별로 구별되어야 하며 해당 쿼리문을 작성하고 반환타입과 파라메터 타입을 작성함 -->
+</mapper>

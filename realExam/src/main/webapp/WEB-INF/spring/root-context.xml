@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="c##hns" /><!--  본인에 맞게 수정-->
+		<property name="password" value="1234" /><!--  본인에 맞게 수정-->
+	</bean>
+	
+	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+<!-- 	
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+ -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/mybatisConfig.xml" /><!--  본인에 맞게 수정-->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mybatis/mapper/memberMapper.xml</value><!--  본인에 맞게 수정, 추가-->
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+	
+	<context:component-scan base-package="kr.co.yangdoll" /><!--  본인에 맞게 수정-->
+ 
+</beans>
